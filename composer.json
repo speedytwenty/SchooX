@@ -1,0 +1,17 @@
+{
+    "name": "speedytwenty/schoox",
+    "type": "library",
+    "description": "Interact with the Schoox REST Api.",
+    "autoload": {
+        "psr-4": {
+            "Schoox\\": "src/Schoox/"
+        }
+    },
+    "require": {
+        "jms/serializer": "^1.6",
+        "nategood/httpful": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    }
+}
