@@ -12,6 +12,11 @@ abstract class Model
 
     public function __construct(Serializer $serializer = null)
     {
+        $this->setSerializer($serializer);
+    }
+
+    public function setSerializer(Serializer $serializer = null)
+    {
         $this->serializer = $serializer ? $serialize : $this->defaultSerializer();
     }
 
@@ -23,6 +28,8 @@ abstract class Model
 
     public function toArray()
     {
+        if (!$this->serializer) $this->setSerializer();
+
         $arr = $this->serializer->toArray($this);
         unset($arr['serializer']);
         return $arr;

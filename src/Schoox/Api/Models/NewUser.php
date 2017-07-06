@@ -63,6 +63,16 @@ class NewUser extends Model
      */
     protected $language;
 
+    /**
+     * @JMS\Type("string")
+     */
+    protected $externalId;
+
+    /**
+     * @JMS\Type("array")
+     */
+    protected $externalIds;
+
     public function __construct($firstName, $lastName, $password, $email)
     {
         $this->firstName = $firstName;
@@ -168,4 +178,19 @@ class NewUser extends Model
         return $this;
     }
 
+    public function getExternalId()
+    {
+        return $this->externalId;
+    }
+
+    public function setExternalId($externalId)
+    {
+        $this->externalId = $externalId;
+        return $this;
+    }
+
+    public function setExternalIds(array $externalIds)
+    {
+        $this->externalIds = $externalIds;
+    }
 }

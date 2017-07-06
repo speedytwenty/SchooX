@@ -70,7 +70,7 @@ class Users extends SchooxApiBase
     public function getDetailsOfUser($userId, $externalId = null)
     {
         $request = $this->service->generateBaseRequest('users/' . $userId);
-        $request->addNonBlankQueryString('externalId', $externalId);
+        $request->addNonBlankQueryString('external_id', $externalId);
         $response = $this->service->executeRequest($request);
         if (!$response->hasErrors()) {
             return  User::createFromArray((array)$response->getBody());
@@ -109,7 +109,7 @@ class Users extends SchooxApiBase
         $request->addNonBlankQueryString('external_id', $externalId);
         $result = $this->service->executeDeleteRequest($request);
         if ($result->hasErrors()) {
-            throw new Exception($result->getBody()->error);
+            throw new \Exception($result->getBody()->error);
         }
         if ($result->getStatusCode() === 204) {
             return true;
@@ -123,7 +123,7 @@ class Users extends SchooxApiBase
         $body = $externalId ? ['external_id' => $mixedId] : ['id' => $mixedId];
         $result = $this->service->executePostRequest($request, json_encode($body));
         if ($result->hasErrors()) {
-            throw new Exception($result->getBody()->error);
+            throw new \Exception($result->getBody()->error);
         }
         if ($result->getStatusCode() === 201) {
             return true;

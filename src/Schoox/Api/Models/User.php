@@ -18,11 +18,13 @@ class User extends Model
 
     /**
      * @JMS\Type("string")
+     * @JMS\SerializedName("firstname")
      */
     private $firstName;
 
     /**
      * @JMS\Type("string")
+     * @JMS\SerializedName("lastname")
      */
     private $lastName;
 
